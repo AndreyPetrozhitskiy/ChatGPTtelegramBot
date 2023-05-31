@@ -19,5 +19,6 @@
     TELEGRAM_TOKEN - токен телеграмм бота
     OPENAI_KEY - токен ChatGPT
 2. npm init
+3. запуск - npm run prod
 Версии:
     1.0.0 - создана 01.06.2023 Россия,Владивосток
