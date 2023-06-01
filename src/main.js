@@ -5,7 +5,7 @@ import config from 'config'
 import { ogg } from './ogg.js'
 import { openai } from './openai.js'
 
-console.log(config.get('TEST_ENV'))
+
 console.log("Бот запущен и работает")
 
 const INITIAL_SESSION = {
