@@ -8,14 +8,11 @@ import { openai } from './openai.js'
 console.log(config.get('TEST_ENV'))
 console.log("Бот запущен и работает")
 
-
 const INITIAL_SESSION = {
     messages: [],
 }
 
-
 const bot = new Telegraf(config.get('TELEGRAM_TOKEN'))
-
 
 bot.use(session())
 
@@ -28,13 +25,8 @@ bot.command('start', async (ctx) => {
     await ctx.reply('Жду вашего голосового или текстового сообщения')
 })
 
-
-
-
-
-
 bot.on(message('voice'), async ctx => {
-    ctx.session ??= INITIAL_SESSION
+    ctx.session = ctx.session !== null && ctx.session !== undefined ? ctx.session : INITIAL_SESSION;//1
     try {
         await ctx.reply(code('Сообщение принял. Жду ответ от сервера...'))
         const link = await ctx.telegram.getFileLink(ctx.message.voice.file_id)
@@ -59,11 +51,10 @@ bot.on(message('voice'), async ctx => {
     } catch (e) {
         console.log(`Error while voice message`, e.message)
     }
-    
 })
 
 bot.on(message('text'), async ctx => {
-    ctx.session ??= INITIAL_SESSION
+    ctx.session = ctx.session !== null && ctx.session !== undefined ? ctx.session : INITIAL_SESSION;  //1
     try {
         await ctx.reply(code('Сообщение принял. Жду ответ от сервера...'))
         
