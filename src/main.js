@@ -6,7 +6,7 @@ import { ogg } from './ogg.js'
 import { openai } from './openai.js'
 
 console.log(config.get('TEST_ENV'))
-
+console.log("Бот запущен и работает")
 
 
 const INITIAL_SESSION = {
@@ -27,6 +27,11 @@ bot.command('start', async (ctx) => {
     ctx.session = INITIAL_SESSION
     await ctx.reply('Жду вашего голосового или текстового сообщения')
 })
+
+
+
+
+
 
 bot.on(message('voice'), async ctx => {
     ctx.session ??= INITIAL_SESSION
